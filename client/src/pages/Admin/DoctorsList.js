@@ -45,7 +45,7 @@ function DoctorsList() {
         getDoctorsData();
       }
     } catch (error) {
-      toast.error('Error changing doctor account status');
+      toast.error('Erro ao alterar o status do especialista');
       dispatch(hideLoading());
     }
   };
@@ -102,7 +102,7 @@ function DoctorsList() {
   ];
   return (
     <Layout>
-      <h1 className="page-header">Doctors List</h1>
+      <h1 className="page-header">Lista de Veterinarios</h1>
       <hr />
       <Table columns={columns} dataSource={doctors} />
     </Layout>
