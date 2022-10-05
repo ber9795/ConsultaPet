@@ -118,27 +118,22 @@ function BookAppointment() {
           <Row gutter={20} className="mt-5" align="middle">
 
             <Col span={8} sm={24} xs={24} lg={8}>
-              <img
-                src="https://thumbs.dreamstime.com/b/finger-press-book-now-button-booking-reservation-icon-online-149789867.jpg"
-                alt=""
-                width="100%"
-                height='400'
-              />
+      
             </Col>
             <Col span={8} sm={24} xs={24} lg={8}>
               <h1 className="normal-text">
-                <b>Timings :</b> {doctor.timings[0]} - {doctor.timings[1]}
+                <b>Horarios :</b> {doctor.timings[0]} - {doctor.timings[1]}
               </h1>
               <p>
-                <b>Phone Number : </b>
+                <b>Telefone: </b>
                 {doctor.phoneNumber}
               </p>
               <p>
-                <b>Address : </b>
+                <b>Endereço: </b>
                 {doctor.address}
               </p>
               <p>
-                <b>Fee per Visit : </b>
+                <b>Preço da consulta: </b>
                 {doctor.feePerCunsultation}
               </p>
               <p>
