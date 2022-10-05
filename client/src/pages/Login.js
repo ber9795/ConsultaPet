@@ -34,10 +34,12 @@ function Login() {
 
     <div className="authentication">
     
-    <img className='logo' src='Logo.jpeg' />
+ 
       <div className="authentication-form card p-3">
+
+    <img className='logo' src='Logo.jpeg' />
       
-        <h1 className="card-title">Bem vindo de Volta</h1>
+        <h1 className="card-title">Bem vindo</h1>
         
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item label="Email" name="email">
@@ -57,8 +59,11 @@ function Login() {
           </Link>
          
         </Form>
+        
         </div>
+        
       </div>
+    
    
   );
 }

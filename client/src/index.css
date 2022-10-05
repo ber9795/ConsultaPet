@@ -106,12 +106,8 @@ p{
 
 /* authentication pages */
 
-.logo{
-  margin-top: -520px;
-  margin-right: -260px;
-  width: 130px;
- 
-}
+
+
 
 .authentication{
    height: 100vh;
@@ -119,14 +115,26 @@ p{
    align-items: center;
    justify-content: center;
    background-color: #2a50ea;
+  
 }
+
 
 
 .authentication-form{
   width: 400px;
+
   
 }
+.logo{
 
+width: 112px;
+padding: 7px 15px;
+margin-left: -35px;
+margin-bottom: -20px;
+margin-top: -26px;
+
+ 
+}
 
 
 .authentication .card-title{
