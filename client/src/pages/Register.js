@@ -31,7 +31,6 @@ function Register() {
   return (
     
     <div className="authentication">
-    <img className='logo' src='Logo.jpeg' />
       <div className="authentication-form card p-3">
   
  
