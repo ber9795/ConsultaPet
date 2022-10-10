@@ -23,7 +23,7 @@ function Login() {
       }
     } catch (error) {
       dispatch(hideLoading());
-      toast.error("Something went wrong");
+      toast.error("Alguma coisa deu errado");
     }
   };
 

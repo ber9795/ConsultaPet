@@ -10,13 +10,13 @@ router.post("/get-doctor-info-by-user-id", authMiddleware, async (req, res) => {
     const doctor = await Doctor.findOne({ userId: req.body.userId });
     res.status(200).send({
       success: true,
-      message: "Doctor info fetched successfully",
+      message: "Sucesso",
       data: doctor,
     });
   } catch (error) {
     res
       .status(500)
-      .send({ message: "Error getting doctor info", success: false, error });
+      .send({ message: "Erro, success: false, error" });
   }
 });
 
@@ -25,13 +25,13 @@ router.post("/get-doctor-info-by-id", authMiddleware, async (req, res) => {
     const doctor = await Doctor.findOne({ _id: req.body.doctorId });
     res.status(200).send({
       success: true,
-      message: "Doctor info fetched successfully",
+      message: "Sucesso",
       data: doctor,
     });
   } catch (error) {
     res
       .status(500)
-      .send({ message: "Error getting doctor info", success: false, error });
+      .send({ message: "Erro", success: false, error });
   }
 });
 
@@ -43,13 +43,13 @@ router.post("/update-doctor-profile", authMiddleware, async (req, res) => {
     );
     res.status(200).send({
       success: true,
-      message: "Doctor profile updated successfully",
+      message: "Perfil do veterinario atualizado com sucesso",
       data: doctor,
     });
   } catch (error) {
     res
       .status(500)
-      .send({ message: "Error getting doctor info", success: false, error });
+      .send({ message: "Erro", success: false, error });
   }
 });
 
@@ -61,14 +61,14 @@ router.get(
       const doctor = await Doctor.findOne({ userId: req.body.userId });
       const appointments = await Appointment.find({ doctorId: doctor._id });
       res.status(200).send({
-        message: "Appointments fetched successfully",
+        message: "Sucesso",
         success: true,
         data: appointments,
       });
     } catch (error) {
       console.log(error);
       res.status(500).send({
-        message: "Error fetching appointments",
+        message: "Erro",
         success: false,
         error,
       });
@@ -87,20 +87,20 @@ router.post("/change-appointment-status", authMiddleware, async (req, res) => {
     const unseenNotifications = user.unseenNotifications;
     unseenNotifications.push({
       type: "appointment-status-changed",
-      message: `Your appointment status has been ${status}`,
+      message: `Seu status de agendamento foi ${status}`,
       onClickPath: "/appointments",
     });
 
     await user.save();
 
     res.status(200).send({
-      message: "Appointment status updated successfully",
+      message: "Status de agendamento atualizado com sucesso",
       success: true
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "Error changing appointment status",
+      message: "Erro ao alterar agendamento",
       success: false,
       error,
     });

@@ -29,7 +29,7 @@ function Notifications() {
         }
       } catch (error) {
         dispatch(hideLoading());
-        toast.error("Something went wrong");
+        toast.error("Alguma coisa deu errado");
       }
   }
 
@@ -50,7 +50,7 @@ function Notifications() {
         }
       } catch (error) {
         dispatch(hideLoading());
-        toast.error("Something went wrong");
+        toast.error("Alguma coisa deu errado");
       }
   }
   return (

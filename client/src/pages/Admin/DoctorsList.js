@@ -54,7 +54,7 @@ function DoctorsList() {
   }, []);
   const columns = [
     {
-      title: "Name",
+      title: "Nome",
       dataIndex: "name",
       render: (text, record) => (
         <span>
@@ -63,11 +63,11 @@ function DoctorsList() {
       ),
     },
     {
-      title: "Phone",
+      title: "Telefone",
       dataIndex: "phoneNumber",
     },
     {
-      title: "Created At",
+      title: "Criado em",
       dataIndex: "createdAt",
       render: (record , text) => moment(record.createdAt).format("DD-MM-YYYY"),
     },
@@ -76,7 +76,7 @@ function DoctorsList() {
       dataIndex: "status",
     },
     {
-      title: "Actions",
+      title: "Açoes",
       dataIndex: "actions",
       render: (text, record) => (
         <div className="d-flex">
@@ -93,7 +93,7 @@ function DoctorsList() {
               className="anchor"
               onClick={() => changeDoctorStatus(record, "blocked")}
             >
-              Block
+              Bloqquear
             </h1>
           )}
         </div>

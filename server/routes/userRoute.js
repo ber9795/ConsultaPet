@@ -39,26 +39,26 @@ router.post("/login", async (req, res) => {
     if (!user) {
       return res
         .status(200)
-        .send({ message: "User does not exist", success: false });
+        .send({ message: "Usuario nao existe", success: false });
     }
     const isMatch = await bcrypt.compare(req.body.password, user.password);
     if (!isMatch) {
       return res
         .status(200)
-        .send({ message: "Password is incorrect", success: false });
+        .send({ message: "Senha incorreta", success: false });
     } else {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: "1d",
       });
       res
         .status(200)
-        .send({ message: "Login successful", success: true, data: token });
+        .send({ message: "Login feito com sucesso", success: true, data: token });
     }
   } catch (error) {
     console.log(error);
     res
       .status(500)
-      .send({ message: "Error logging in", success: false, error });
+      .send({ message: "Erro ao logar", success: false, error });
   }
 });
 
@@ -69,7 +69,7 @@ router.post("/get-user-info-by-id", authMiddleware, async (req, res) => {
     if (!user) {
       return res
         .status(200)
-        .send({ message: "User does not exist", success: false });
+        .send({ message: "User nao existe", success: false });
     } else {
       res.status(200).send({
         success: true,
@@ -79,7 +79,7 @@ router.post("/get-user-info-by-id", authMiddleware, async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .send({ message: "Error getting user info", success: false, error });
+      .send({ message: "Erro", success: false, error });
   }
 });
 
@@ -92,7 +92,7 @@ router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
     const unseenNotifications = adminUser.unseenNotifications;
     unseenNotifications.push({
       type: "new-doctor-request",
-      message: `${newdoctor.firstName} ${newdoctor.lastName} has applied for a doctor account`,
+      message: `${newdoctor.firstName} ${newdoctor.lastName} aplicou ao veterinario`,
       data: {
         doctorId: newdoctor._id,
         name: newdoctor.firstName + " " + newdoctor.lastName,
@@ -102,12 +102,12 @@ router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
     await User.findByIdAndUpdate(adminUser._id, { unseenNotifications });
     res.status(200).send({
       success: true,
-      message: "Doctor account applied successfully",
+      message: "Aplicado com sucesso ao veterinario",
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "Error applying doctor account",
+      message: "Erro",
       success: false,
       error,
     });
@@ -128,13 +128,13 @@ router.post(
       updatedUser.password = undefined;
       res.status(200).send({
         success: true,
-        message: "All notifications marked as seen",
+        message: "Todas as notificaçoes marcadas como vistas",
         data: updatedUser,
       });
     } catch (error) {
       console.log(error);
       res.status(500).send({
-        message: "Error applying doctor account",
+        message: "Erro",
         success: false,
         error,
       });
@@ -151,13 +151,13 @@ router.post("/delete-all-notifications", authMiddleware, async (req, res) => {
     updatedUser.password = undefined;
     res.status(200).send({
       success: true,
-      message: "All notifications cleared",
+      message: "Todas as notificaçoes limpas",
       data: updatedUser,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "Error applying doctor account",
+      message: "Erro",
       success: false,
       error,
     });
@@ -168,7 +168,7 @@ router.get("/get-all-approved-doctors", authMiddleware, async (req, res) => {
   try {
     const doctors = await Doctor.find({ status: "approved" });
     res.status(200).send({
-      message: "Doctors fetched successfully",
+      message: "Sucesso",
       success: true,
       data: doctors,
     });
@@ -193,18 +193,18 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
     const user = await User.findOne({ _id: req.body.doctorInfo.userId });
     user.unseenNotifications.push({
       type: "new-appointment-request",
-      message: `A new appointment request has been made by ${req.body.userInfo.name}`,
+      message: `Um novo agendamento requisitado foi por ${req.body.userInfo.name}`,
       onClickPath: "/doctor/appointments",
     });
     await user.save();
     res.status(200).send({
-      message: "Appointment booked successfully",
+      message: "Agendamento feito com sucesso",
       success: true,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "Error booking appointment",
+      message: "Erro",
       success: false,
       error,
     });
@@ -226,19 +226,19 @@ router.post("/check-booking-avilability", authMiddleware, async (req, res) => {
     });
     if (appointments.length > 0) {
       return res.status(200).send({
-        message: "Appointments not available",
+        message: "Agendamento nao disponivel",
         success: false,
       });
     } else {
       return res.status(200).send({
-        message: "Appointments available",
+        message: "Agendamento disponivel",
         success: true,
       });
     }
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "Error booking appointment",
+      message: "Erro",
       success: false,
       error,
     });
@@ -249,14 +249,14 @@ router.get("/get-appointments-by-user-id", authMiddleware, async (req, res) => {
   try {
     const appointments = await Appointment.find({ userId: req.body.userId });
     res.status(200).send({
-      message: "Appointments fetched successfully",
+      message: "Sucesso",
       success: true,
       data: appointments,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "Error fetching appointments",
+      message: "Erro",
       success: false,
       error,
     });

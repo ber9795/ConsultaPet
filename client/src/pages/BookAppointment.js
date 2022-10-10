@@ -67,7 +67,7 @@ function BookAppointment() {
         toast.error(response.data.message);
       }
     } catch (error) {
-      toast.error("Error booking appointment");
+      toast.error("Erro ao agendar");
       dispatch(hideLoading());
     }
   };
@@ -99,7 +99,7 @@ function BookAppointment() {
         navigate('/appointments')
       }
     } catch (error) {
-      toast.error("Error booking appointment");
+      toast.error("Erro ao agendar");
       dispatch(hideLoading());
     }
   };

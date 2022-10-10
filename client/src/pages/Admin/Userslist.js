@@ -32,7 +32,7 @@ function Userslist() {
 
   const columns = [
     {
-      title: "Name",
+      title: "Nome",
       dataIndex: "name",
     },
     {
@@ -40,16 +40,16 @@ function Userslist() {
       dataIndex: "email",
     },
     {
-      title: "Created At",
+      title: "Criado em",
       dataIndex: "createdAt",
       render: (record , text) => moment(record.createdAt).format("DD-MM-YYYY"),
     },
     {
-      title: "Actions",
+      title: "Açoes",
       dataIndex: "actions",
       render: (text, record) => (
         <div className="d-flex">
-          <h1 className="anchor">Block</h1>
+          <h1 className="anchor">Bloquear</h1>
         </div>
       ),
     },
@@ -57,7 +57,7 @@ function Userslist() {
 
   return (
     <Layout>
-      <h1 className="page-header">Users List</h1>
+      <h1 className="page-header">Lista de usuarios</h1>
       <hr />
       <Table columns={columns} dataSource={users}/>
     </Layout>
