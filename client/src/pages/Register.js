@@ -36,9 +36,12 @@ function Register() {
  
         <h1 className="card-title">Prazer em Conhecer Voce</h1>
         <Form layout="vertical" onFinish={onFinish}>
-          <Form.Item label="Nome" name="name">
-            <Input placeholder="Nome" />
+          <Form.Item label="Nome do dono" name="ownerName">
+            <Input placeholder="Nome do dono" />
           </Form.Item>
+          <Form.Item label="Nome do Pet" name="name">
+          <Input placeholder="Nome do pet" />
+        </Form.Item>
           <Form.Item label="Email" name="email">
             <Input placeholder="Email" />
           </Form.Item>

@@ -36,6 +36,10 @@ function Userslist() {
       dataIndex: "name",
     },
     {
+      title: "Nome do dono",
+      dataIndex: "ownerName",
+    },
+    {
       title: "Email",
       dataIndex: "email",
     },
